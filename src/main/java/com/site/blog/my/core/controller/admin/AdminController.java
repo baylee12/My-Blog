@@ -2,6 +2,7 @@ package com.site.blog.my.core.controller.admin;
 
 import com.site.blog.my.core.entity.AdminUser;
 import com.site.blog.my.core.service.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @RequestMapping("/admin")
+@Slf4j
 public class AdminController {
 
     @Resource
@@ -55,6 +57,8 @@ public class AdminController {
                         @RequestParam("password") String password,
                         @RequestParam("verifyCode") String verifyCode,
                         HttpSession session) {
+        log.info("用户登录 @@@ 用户名 {}", userName);
+        log.info("用户登录 @@@ 密码 {}", password);
         if (StringUtils.isEmpty(verifyCode)) {
             session.setAttribute("errorMsg", "验证码不能为空");
             return "admin/login";
