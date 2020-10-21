@@ -82,6 +82,9 @@ public class AdminController {
         } else {
             session.setAttribute("errorMsg", "登陆失败");
             return "admin/login";
+
+            
+
         }
     }
 
